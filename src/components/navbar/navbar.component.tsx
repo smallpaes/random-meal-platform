@@ -17,7 +17,9 @@ const Navbar: FC = (): ReactElement => {
         <NavLinksItem>
           <Link to="/meals">Meals</Link>
         </NavLinksItem>
-        <li>Second</li>
+        <NavLinksItem>
+          <Link to="/sign-in">Sign In</Link>
+        </NavLinksItem>
       </NanLinksContainer>
     </NavbarContainer>
   );
