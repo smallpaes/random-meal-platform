@@ -16,6 +16,14 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
   }
 
+  a:focus, a:visited, a:link, a:active {
+    color: inherit;
+  }
+
+  ul {
+    list-style: none;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     margin: 0;
   }
