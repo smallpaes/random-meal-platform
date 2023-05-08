@@ -1,6 +1,11 @@
 import { FC, ReactElement } from 'react';
 import { Link } from 'react-router-dom';
-import { NavbarContainer, Logo, NanLinksContainer } from './navbar.styles';
+import {
+  NavbarContainer,
+  Logo,
+  NanLinksContainer,
+  NavLinksItem,
+} from './navbar.styles';
 
 const Navbar: FC = (): ReactElement => {
   return (
@@ -9,9 +14,9 @@ const Navbar: FC = (): ReactElement => {
         <Logo />
       </Link>
       <NanLinksContainer>
-        <li>
+        <NavLinksItem>
           <Link to="/meals">Meals</Link>
-        </li>
+        </NavLinksItem>
         <li>Second</li>
       </NanLinksContainer>
     </NavbarContainer>

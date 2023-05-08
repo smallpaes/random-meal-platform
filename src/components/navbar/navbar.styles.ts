@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ReactComponent as LogoSvg } from '../../assets/logo.svg';
+import { Link } from 'react-router-dom';
 
 export const NavbarContainer = styled.nav`
   display: flex;
@@ -13,6 +14,25 @@ export const NanLinksContainer = styled.ul`
   align-items: center;
   gap: 1rem;
   color: ${({ theme }) => theme.colors.dark[200]};
+`;
+
+export const NavLinksItem = styled.li`
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    background-color: ${({ theme }) => theme.colors.secondary};
+    height: 0.1rem;
+    transition: all 0.2s linear;
+  }
+  &:hover {
+    &::after {
+      width: 100%;
+    }
+  }
 `;
 
 export const Logo = styled(LogoSvg)`
