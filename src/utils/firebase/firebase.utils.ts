@@ -4,6 +4,8 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   User,
+  createUserWithEmailAndPassword,
+  UserCredential,
 } from 'firebase/auth';
 
 import {
@@ -44,9 +46,15 @@ export type UserDocument = {
   createdAt: Date;
 };
 
+export type AdditionalUserInfo = {
+  displayName?: string;
+};
+
 export const createUserDocumentFromAuth = async (
   userAuth: User,
+  additionalInfo?: AdditionalUserInfo,
 ): Promise<QueryDocumentSnapshot<UserDocument> | void> => {
+  if (!userAuth) return;
   // db, collection, id: receive a doc instance
   const userDocRef = doc(db, 'users', userAuth.uid);
   // use the doc instance to check if the user exists
@@ -61,10 +69,19 @@ export const createUserDocumentFromAuth = async (
         displayName,
         email,
         createdAt,
+        ...additionalInfo,
       });
     } catch (e) {
       console.log('Error creating user', e);
     }
   }
   return userDocSnapshot as QueryDocumentSnapshot<UserDocument>;
+};
+
+export const createAuthUserWithEmailAndPassword = async (
+  email: string,
+  password: string,
+): Promise<UserCredential | void> => {
+  if (!email || !password) return;
+  return await createUserWithEmailAndPassword(auth, email, password);
 };
