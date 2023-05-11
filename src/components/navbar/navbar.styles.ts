@@ -38,7 +38,7 @@ export const NavLinksItem = styled.li`
 export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.6rem;
 `;
 
 export const LogoText = styled.span`
