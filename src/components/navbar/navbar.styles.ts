@@ -35,6 +35,19 @@ export const NavLinksItem = styled.li`
   }
 `;
 
+export const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+`;
+
+export const LogoText = styled.span`
+  font-family: 'Dancing Script';
+  font-size: ${({ theme }) => theme.fontSizes.xl};
+  color: ${({ theme }) => theme.colors.primary};
+  font-weight: 700;
+`;
+
 export const Logo = styled(LogoSvg)`
   width: 40px;
   height: 100%;

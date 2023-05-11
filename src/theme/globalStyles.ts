@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import DancingScript from '../assets/fonts/Dancing_Script/static/DancingScript-Regular.ttf';
 
 export const GlobalStyles = createGlobalStyle`
   *, *::before, *::after {
@@ -30,5 +31,10 @@ export const GlobalStyles = createGlobalStyle`
 
   &::-webkit-scrollbar {
     width: 3px;
+  }
+
+  @font-face {
+    font-family: "Dancing Script";
+    src: url(${DancingScript}) format("woff2");
   }
 `;
