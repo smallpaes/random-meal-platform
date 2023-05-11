@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { ReactComponent as LogoSvg } from '../../assets/logo.svg';
-import { Link } from 'react-router-dom';
 
 export const NavbarContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 1.5rem;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.light[300]};
 `;
 
 export const NanLinksContainer = styled.ul`

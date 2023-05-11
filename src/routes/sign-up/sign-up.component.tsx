@@ -4,6 +4,9 @@ import {
   createUserDocumentFromAuth,
 } from '../../utils/firebase/firebase.utils';
 import { AuthError, AuthErrorCodes } from 'firebase/auth';
+import { FormInputContainer } from '../../components/form-input/form-input.styles';
+import { Form, FormContainer, FormTitle } from './sign-up.styles';
+import Button, { ButtonTypes } from '../../components/button/button.component';
 
 export type ISignUp = {
   name: string;
@@ -50,51 +53,55 @@ const SignUp: FC = (): ReactElement => {
 
   return (
     <section>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          value={name}
-          autoComplete="name"
-          placeholder="Display Name"
-          minLength={1}
-          required
-          onChange={handleChange}
-        />
-        <input
-          type="email"
-          name="email"
-          id="email"
-          value={email}
-          autoComplete="email"
-          placeholder="Email"
-          required
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={password}
-          autoComplete="new-password"
-          placeholder="Password"
-          required
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          name="confirmPassword"
-          id="confirm-password"
-          value={confirmPassword}
-          autoComplete="new-password"
-          placeholder="Confirm Password"
-          required
-          onChange={handleChange}
-        />
-        <button type="submit">Sign Up</button>
-      </form>
+      <FormContainer>
+        <FormTitle>Sign Up</FormTitle>
+        <Form onSubmit={handleSubmit}>
+          <FormInputContainer
+            type="text"
+            name="name"
+            id="name"
+            value={name}
+            autoComplete="name"
+            placeholder="Name"
+            minLength={1}
+            required
+            onChange={handleChange}
+          />
+          <FormInputContainer
+            type="email"
+            name="email"
+            id="email"
+            value={email}
+            autoComplete="email"
+            placeholder="Email"
+            required
+            onChange={handleChange}
+          />
+          <FormInputContainer
+            type="password"
+            name="password"
+            id="password"
+            value={password}
+            autoComplete="new-password"
+            placeholder="Password"
+            required
+            onChange={handleChange}
+          />
+          <FormInputContainer
+            type="password"
+            name="confirmPassword"
+            id="confirm-password"
+            value={confirmPassword}
+            autoComplete="new-password"
+            placeholder="Confirm Password"
+            required
+            onChange={handleChange}
+          />
+          <Button type="submit" buttonType={ButtonTypes.PRIMARY}>
+            Sign Up
+          </Button>
+        </Form>
+      </FormContainer>
     </section>
   );
 };
