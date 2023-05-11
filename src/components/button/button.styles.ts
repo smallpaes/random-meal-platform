@@ -18,6 +18,7 @@ export const BaseButton = styled.button<ButtonProps>`
   color: ${({ theme }) => theme.colors.light[100]};
   font-size: ${({ theme }) => theme.fontSizes.md};
   border-radius: ${({ theme }) => theme.borderRadius.sm};
+  width: 100%;
 `;
 
 export const PrimaryButton = styled(BaseButton)`
