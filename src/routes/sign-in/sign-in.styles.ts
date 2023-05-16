@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const FormContainer = styled.div`
   width: 100%;
@@ -22,4 +23,16 @@ export const Form = styled.form`
 export const FormTitle = styled.h1`
   margin-bottom: 1.5rem;
   color: ${({ theme }) => theme.colors.dark[200]};
+`;
+
+export const SignUpMessage = styled.p`
+  font-size: ${({ theme }) => theme.fontSizes.sm};
+  margin-top: 1rem;
+  text-align: center;
+  color: ${({ theme }) => theme.colors.dark[200]};
+`;
+
+export const SignUpLink = styled(Link)`
+  margin-left: 0.3rem;
+  text-decoration: underline;
 `;

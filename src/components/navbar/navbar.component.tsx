@@ -13,7 +13,7 @@ import {
 } from './navbar.styles';
 
 const Navbar: FC = (): ReactElement => {
-  const user = useSelector(selectUser);
+  const { user } = useSelector(selectUser);
   console.log(user);
   return (
     <NavbarContainer>

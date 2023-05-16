@@ -3,9 +3,15 @@ import {
   signInWIthGoogle,
   signInAuthUserWithEmailAndPassword,
 } from '../../utils/firebase/firebase.utils';
-import { Link } from 'react-router-dom';
 import { FormInputContainer } from '../../components/form-input/form-input.styles';
-import { Form, FormContainer, FormTitle, Separator } from './sign-in.styles';
+import {
+  Form,
+  FormContainer,
+  FormTitle,
+  Separator,
+  SignUpMessage,
+  SignUpLink,
+} from './sign-in.styles';
 import Button, { ButtonTypes } from '../../components/button/button.component';
 
 export type SignInForm = {
@@ -78,7 +84,10 @@ const SignIn: FC = (): ReactElement => {
         <Button buttonType={ButtonTypes.SECONDARY} onClick={logGoogleUser}>
           Sign In With Google
         </Button>
-        <Link to="/sign-up">Don&#39;t have an account? Sign Up</Link>
+        <SignUpMessage>
+          Don&#39;t have an account?
+          <SignUpLink to="/sign-up">Sign Up</SignUpLink>
+        </SignUpMessage>
       </FormContainer>
     </section>
   );
