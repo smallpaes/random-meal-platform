@@ -1,9 +1,9 @@
 import { FC, ReactElement, useState } from 'react';
 import {
   signInWIthGoogle,
-  createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPassword,
 } from '../../utils/firebase/firebase.utils';
+import { Link } from 'react-router-dom';
 import { FormInputContainer } from '../../components/form-input/form-input.styles';
 import { Form, FormContainer, FormTitle, Separator } from './sign-in.styles';
 import Button, { ButtonTypes } from '../../components/button/button.component';
@@ -34,7 +34,6 @@ const SignIn: FC = (): ReactElement => {
         email,
         password,
       );
-      console.log(userCredential);
       if (!userCredential) throw new Error('Error logging in user');
       setFormData(defaultFormData);
     } catch (e) {
@@ -43,8 +42,7 @@ const SignIn: FC = (): ReactElement => {
   };
 
   const logGoogleUser = async () => {
-    const { user } = await signInWIthGoogle();
-    await createUserDocumentFromAuth(user);
+    await signInWIthGoogle();
   };
 
   return (
@@ -80,6 +78,7 @@ const SignIn: FC = (): ReactElement => {
         <Button buttonType={ButtonTypes.SECONDARY} onClick={logGoogleUser}>
           Sign In With Google
         </Button>
+        <Link to="/sign-up">Don&#39;t have an account? Sign Up</Link>
       </FormContainer>
     </section>
   );

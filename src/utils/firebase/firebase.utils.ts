@@ -7,6 +7,9 @@ import {
   User,
   createUserWithEmailAndPassword,
   UserCredential,
+  signOut,
+  onAuthStateChanged,
+  NextOrObserver,
 } from 'firebase/auth';
 
 import {
@@ -61,7 +64,7 @@ export const createUserDocumentFromAuth = async (
   // use the doc instance to check if the user exists
   const userDocSnapshot = await getDoc(userDocRef);
   const isUserDocExists = userDocSnapshot.exists();
-
+  console;
   if (!isUserDocExists) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
@@ -94,3 +97,8 @@ export const signInAuthUserWithEmailAndPassword = async (
   if (!email || !password) return;
   return await signInWithEmailAndPassword(auth, email, password);
 };
+
+export const signOutAuthUser = async (): Promise<void> => signOut(auth);
+
+export const onAuthStateChangesListener = (callback: NextOrObserver<User>) =>
+  onAuthStateChanged(auth, callback);
