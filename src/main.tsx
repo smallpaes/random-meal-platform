@@ -9,13 +9,17 @@ import App from './App.tsx';
 import { store } from './store/store.ts';
 import './index.css';
 
+import { MealsProvider } from './context/meals.context';
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <GlobalStyles />
-          <App />
+          <MealsProvider>
+            <App />
+          </MealsProvider>
         </ThemeProvider>
       </BrowserRouter>
     </Provider>
