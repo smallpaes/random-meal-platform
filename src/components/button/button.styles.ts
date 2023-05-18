@@ -29,6 +29,12 @@ export const PrimaryButton = styled(BaseButton)`
   border-color: ${({ theme, $isOutline }) =>
     $isOutline ? theme.colors.primary : 'none'};
   ${({ disabled }) => disabled && disabledStyles};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.light[100]};
+    filter: ${({ $isOutline }) => ($isOutline ? 'none' : 'brightness(0.9)')};
+  }
 `;
 
 export const SecondaryButton = styled(BaseButton)`
@@ -39,4 +45,9 @@ export const SecondaryButton = styled(BaseButton)`
   border-color: ${({ theme, $isOutline }) =>
     $isOutline ? theme.colors.secondary : 'none'};
   ${({ disabled }) => disabled && disabledStyles};
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.light[100]};
+    filter: ${({ $isOutline }) => ($isOutline ? 'none' : 'brightness(0.9)')};
+  }
 `;
