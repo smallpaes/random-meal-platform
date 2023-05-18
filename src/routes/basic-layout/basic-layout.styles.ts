@@ -5,7 +5,7 @@ export const BasicLayoutContainer = styled.div`
 `;
 
 export const BasicLayoutContent = styled.main`
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
   max-width: 1200px;
   margin: 0 auto;
 `;

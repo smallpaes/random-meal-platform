@@ -1,13 +1,13 @@
 // for media query
-const customMediaQuery = (maxWidth: number) =>
-  `@media (max-width: ${maxWidth}px)`;
+const customMediaQuery = (minWidth: number) =>
+  `@media (min-width: ${minWidth}px)`;
 
 // for passing of custom value
 const BASE_FONT_SIZE = 16;
 const customValue = (val: number) => `${val / BASE_FONT_SIZE}px`;
 
 interface IMediaQueriesBreakpoints {
-  custom: (maxNumber: number) => string;
+  custom: (minWidth: number) => string;
   xs: string;
   sm: string;
   md: string;

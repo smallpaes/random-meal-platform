@@ -1,11 +1,10 @@
 import { AnyAction } from 'redux';
-import { MealType } from '../../context/meals.context';
-import { addItem, toggleCart } from './cart.action';
-export type CartItemType = MealType & { quantity: number };
+import { setItems, toggleCart } from './cart.action';
+import { CartItem } from './cart.types';
 
 export type CartState = {
   readonly isCartOpen: boolean;
-  readonly cartItems: CartItemType[];
+  readonly cartItems: CartItem[];
 };
 
 const CART_INITIAL_STATE: CartState = {
@@ -15,14 +14,12 @@ const CART_INITIAL_STATE: CartState = {
 
 export const cartReducer = (
   state = CART_INITIAL_STATE,
-  action = {} as AnyAction,
+  action: AnyAction,
 ): CartState => {
-  console.log('toggleCart, out', action);
-  if (addItem.match(action)) {
+  if (setItems.match(action)) {
     return { ...state, cartItems: action.payload };
   }
   if (toggleCart.match(action)) {
-    console.log('toggleCart');
     return { ...state, isCartOpen: !state.isCartOpen };
   }
   return state;

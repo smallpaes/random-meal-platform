@@ -33,6 +33,11 @@ export const GlobalStyles = createGlobalStyle`
     width: 3px;
   }
 
+  button {
+    border: none; 
+    outline: none;
+  }
+
   @font-face {
     font-family: "Dancing Script";
     src: url(${DancingScript}) format("woff2");

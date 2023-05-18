@@ -12,6 +12,7 @@ import BasicLayout from './routes/basic-layout/basic-layout.component';
 import Shop from './routes/shop/shop.component';
 import SignIn from './routes/sign-in/sign-in.component';
 import SignUp from './routes/sign-up/sign-up.component';
+import Checkout from './routes/checkout/checkout.component';
 import { setUser } from './store/user/user.action';
 
 const App: FC = (): ReactElement => {
@@ -37,6 +38,7 @@ const App: FC = (): ReactElement => {
         <Route path="sign-in" element={<SignIn />} />
         <Route path="sign-up" element={<SignUp />} />
         <Route path="shop" element={<Shop />} />
+        <Route path="checkout" element={<Checkout />} />
       </Route>
     </Routes>
   );

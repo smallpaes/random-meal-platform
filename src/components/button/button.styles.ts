@@ -9,6 +9,11 @@ export const disabledStyles = css`
   color: ${({ theme }) => theme.colors.light[100]};
   border: none;
   cursor: not-allowed;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.light[300]};
+    color: ${({ theme }) => theme.colors.light[100]};
+  }
 `;
 
 export const BaseButton = styled.button<ButtonProps>`
@@ -28,13 +33,13 @@ export const PrimaryButton = styled(BaseButton)`
     $isOutline ? theme.colors.primary : theme.colors.light[100]};
   border-color: ${({ theme, $isOutline }) =>
     $isOutline ? theme.colors.primary : 'none'};
-  ${({ disabled }) => disabled && disabledStyles};
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.light[100]};
     filter: ${({ $isOutline }) => ($isOutline ? 'none' : 'brightness(0.9)')};
   }
+  ${({ disabled }) => disabled && disabledStyles};
 `;
 
 export const SecondaryButton = styled(BaseButton)`
@@ -44,10 +49,10 @@ export const SecondaryButton = styled(BaseButton)`
     $isOutline ? theme.colors.secondary : theme.colors.light[100]};
   border-color: ${({ theme, $isOutline }) =>
     $isOutline ? theme.colors.secondary : 'none'};
-  ${({ disabled }) => disabled && disabledStyles};
   &:hover {
     background-color: ${({ theme }) => theme.colors.secondary};
     color: ${({ theme }) => theme.colors.light[100]};
     filter: ${({ $isOutline }) => ($isOutline ? 'none' : 'brightness(0.9)')};
   }
+  ${({ disabled }) => disabled && disabledStyles};
 `;
