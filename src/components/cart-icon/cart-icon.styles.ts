@@ -10,6 +10,7 @@ export const CartIconContainer = styled.div`
 export const ShoppingCartIcon = styled(CartSvg)`
   width: 24px;
   height: 24px;
+  fill: ${({ theme }) => theme.colors.dark[100]};
 `;
 
 export const CartIconCount = styled.span`
