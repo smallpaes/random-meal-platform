@@ -1,4 +1,4 @@
-import { MealType } from '../../context/meals.context';
+import { MealType } from '../../context/categories.context';
 
 export type CartItem = MealType & { quantity: number };
 

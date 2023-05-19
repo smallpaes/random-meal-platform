@@ -29,6 +29,22 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
   }
 
+  h1 {
+    font-size: ${({ theme }) => theme.fontSizes.xxxl};
+  }
+  
+  h2 {
+    font-size: ${({ theme }) => theme.fontSizes.xxl};
+  }
+
+  h3 {
+    font-size: ${({ theme }) => theme.fontSizes.xl};
+  }
+
+  h4 {
+    font-size: ${({ theme }) => theme.fontSizes.lg};
+  }
+
   &::-webkit-scrollbar {
     width: 3px;
   }

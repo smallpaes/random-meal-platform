@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import { MealCard } from './meal-card.component';
 
 export const MealCardContainer = styled.article`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 300px;
+  grid-template-rows: 200px;
   overflow: hidden;
   border-radius: ${({ theme }) => theme.borderRadius.sm};
   box-shadow: 0 1px 4px #00000014, 0 0 0 1px #0000000a;
@@ -28,6 +29,10 @@ export const MealCardTitleContainer = styled.div`
   flex-direction: column;
   gap: 0.3rem;
   margin-bottom: 0.5rem;
+`;
+
+export const MealCardTitle = styled.h4`
+  color: ${({ theme }) => theme.colors.dark[200]};
 `;
 
 export const MealCardPrice = styled.span`

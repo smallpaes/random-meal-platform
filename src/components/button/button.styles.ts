@@ -18,7 +18,7 @@ export const disabledStyles = css`
 
 export const BaseButton = styled.button<ButtonProps>`
   border: none;
-  background-color: ${({ theme }) => theme.colors.dark[100]};
+  background-color: 1px solid ${({ theme }) => theme.colors.dark[100]};
   padding: 0.5rem;
   color: ${({ theme }) => theme.colors.light[100]};
   font-size: ${({ theme }) => theme.fontSizes.md};
@@ -31,8 +31,8 @@ export const PrimaryButton = styled(BaseButton)`
     $isOutline ? theme.colors.light[100] : theme.colors.primary};
   color: ${({ theme, $isOutline }) =>
     $isOutline ? theme.colors.primary : theme.colors.light[100]};
-  border-color: ${({ theme, $isOutline }) =>
-    $isOutline ? theme.colors.primary : 'none'};
+  border: 1px solid
+    ${({ theme, $isOutline }) => ($isOutline ? theme.colors.primary : 'none')};
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.primary};
@@ -47,8 +47,8 @@ export const SecondaryButton = styled(BaseButton)`
     $isOutline ? theme.colors.light[100] : theme.colors.secondary};
   color: ${({ theme, $isOutline }) =>
     $isOutline ? theme.colors.secondary : theme.colors.light[100]};
-  border-color: ${({ theme, $isOutline }) =>
-    $isOutline ? theme.colors.secondary : 'none'};
+  border: 1px solid
+    ${({ theme, $isOutline }) => ($isOutline ? theme.colors.secondary : 'none')};
   &:hover {
     background-color: ${({ theme }) => theme.colors.secondary};
     color: ${({ theme }) => theme.colors.light[100]};

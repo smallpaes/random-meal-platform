@@ -5,7 +5,7 @@ import {
   Action,
 } from '../../utils/reducer/reducer.utils';
 import { CART_ACTION_TYPES } from './cart.types';
-import { MealType } from '../../context/meals.context';
+import { MealType } from '../../context/categories.context';
 import { CartItem } from './cart.types';
 
 export type ToggleCart = Action<CART_ACTION_TYPES.TOGGLE_CART>;

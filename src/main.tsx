@@ -9,7 +9,7 @@ import App from './App.tsx';
 import { store } from './store/store.ts';
 import './index.css';
 
-import { MealsProvider } from './context/meals.context';
+import { CategoriesProvider } from './context/categories.context.tsx';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
@@ -17,9 +17,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <GlobalStyles />
-          <MealsProvider>
+          <CategoriesProvider>
             <App />
-          </MealsProvider>
+          </CategoriesProvider>
         </ThemeProvider>
       </BrowserRouter>
     </Provider>

@@ -9,9 +9,10 @@ import {
   MealCardImage,
   MealCardTitleContainer,
   MealCardPrice,
+  MealCardTitle,
 } from './meal-card.styles';
 
-import { MealType } from '../../context/meals.context';
+import { MealType } from '../../context/categories.context';
 
 interface IMealCard {
   meal: MealType;
@@ -27,7 +28,7 @@ export const MealCard: FC<IMealCard> = ({ meal }): ReactElement => {
       <MealCardImage src={imageUrl} alt={name} />
       <MealCardContent>
         <MealCardTitleContainer>
-          <h3>{name}</h3>
+          <MealCardTitle>{name}</MealCardTitle>
           <MealCardPrice>{`$ ${price}`}</MealCardPrice>
         </MealCardTitleContainer>
         <Button buttonType={ButtonTypes.SECONDARY} onClick={addMealToCart}>
