@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Button from '../../components/button/button.component';
 
-export const ShopContainer = styled.section``;
+export const MealsContainer = styled.section``;
 
 export const CategoryContainer = styled.section`
   margin-bottom: 3.5rem;

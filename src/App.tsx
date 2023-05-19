@@ -9,7 +9,7 @@ import {
 
 import Home from './routes/home/home.component';
 import BasicLayout from './routes/basic-layout/basic-layout.component';
-import Shop from './routes/shop/shop.component';
+import Meals from './routes/meals/meals.component';
 import SignIn from './routes/sign-in/sign-in.component';
 import SignUp from './routes/sign-up/sign-up.component';
 import Checkout from './routes/checkout/checkout.component';
@@ -37,7 +37,7 @@ const App: FC = (): ReactElement => {
         <Route index element={<Home />} />
         <Route path="sign-in" element={<SignIn />} />
         <Route path="sign-up" element={<SignUp />} />
-        <Route path="shop" element={<Shop />} />
+        <Route path="meals/*" element={<Meals />} />
         <Route path="checkout" element={<Checkout />} />
       </Route>
     </Routes>
