@@ -17,7 +17,7 @@ import {
 const Checkout: FC = (): ReactElement => {
   const checkoutItems = useSelector(selectCartItems);
   const total = useSelector(selectCartTotal);
-
+  console.log('rerender');
   return (
     <CheckoutContainer>
       <CheckoutSidebar>
