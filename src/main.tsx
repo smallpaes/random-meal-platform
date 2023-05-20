@@ -9,17 +9,13 @@ import App from './App.tsx';
 import { store } from './store/store.ts';
 import './index.css';
 
-import { CategoriesProvider } from './context/categories.context.tsx';
-
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <GlobalStyles />
-          <CategoriesProvider>
-            <App />
-          </CategoriesProvider>
+          <App />
         </ThemeProvider>
       </BrowserRouter>
     </Provider>

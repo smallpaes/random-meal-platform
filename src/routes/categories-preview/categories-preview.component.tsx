@@ -1,11 +1,11 @@
-import { FC, ReactElement, useContext } from 'react';
-
-import { CategoriesContext } from '../../context/categories.context';
+import { FC, ReactElement } from 'react';
+import { useSelector } from 'react-redux';
+import { selectCategoriesMap } from '../../store/categories/categories.selector';
 
 import MealsPreview from '../../components/meals-preview/meals-preview.component';
 
 const CategoriesPreview: FC = (): ReactElement => {
-  const { categoriesMap } = useContext(CategoriesContext);
+  const categoriesMap = useSelector(selectCategoriesMap);
   return (
     <>
       {Object.keys(categoriesMap).map((title: string) => (

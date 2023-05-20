@@ -1,7 +1,9 @@
-import { FC, ReactElement, useContext, useEffect, useState } from 'react';
+import { FC, ReactElement, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { CategoriesContext, MealType } from '../../context/categories.context';
+import { useSelector } from 'react-redux';
 
+import { selectCategoriesMap } from '../../store/categories/categories.selector';
+import { CategoryItem } from '../../store/categories/categories.types';
 import { MealCard } from '../../components/meal-card/meal-card.component';
 
 import {
@@ -12,8 +14,9 @@ import {
 
 const Category: FC = (): ReactElement => {
   const { category } = useParams();
-  const [categoryMeals, setCategoryMeals] = useState<MealType[]>([]);
-  const { categoriesMap } = useContext(CategoriesContext);
+  const [categoryMeals, setCategoryMeals] = useState<CategoryItem[]>([]);
+
+  const categoriesMap = useSelector(selectCategoriesMap);
 
   useEffect(() => {
     if (!category) return;

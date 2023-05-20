@@ -1,6 +1,6 @@
 import { FC, ReactElement } from 'react';
 
-import { MealType } from '../../context/categories.context';
+import { CategoryItem } from '../../store/categories/categories.types';
 import { ButtonTypes } from '../button/button.component';
 import { MealCard } from '../meal-card/meal-card.component';
 import {
@@ -12,7 +12,7 @@ import {
 
 export interface IMealsPreview {
   title: string;
-  meals: MealType[];
+  meals: CategoryItem[];
 }
 
 const CategoriesPreview: FC<IMealsPreview> = ({

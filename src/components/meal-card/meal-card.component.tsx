@@ -12,10 +12,10 @@ import {
   MealCardTitle,
 } from './meal-card.styles';
 
-import { MealType } from '../../context/categories.context';
+import { CategoryItem } from '../../store/categories/categories.types';
 
 interface IMealCard {
-  meal: MealType;
+  meal: CategoryItem;
 }
 
 export const MealCard: FC<IMealCard> = ({ meal }): ReactElement => {

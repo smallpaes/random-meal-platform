@@ -31,6 +31,7 @@ const App: FC = (): ReactElement => {
     );
     return () => unsubscribe();
   }, [dispatch]);
+
   return (
     <Routes>
       <Route path="/" element={<BasicLayout />}>

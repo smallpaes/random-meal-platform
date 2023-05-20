@@ -23,6 +23,8 @@ import {
   getDocs,
 } from 'firebase/firestore';
 
+import { Category } from '../../store/categories/categories.types';
+
 const firebaseConfig = {
   apiKey: 'AIzaSyA64XEr_P-on7A-w7dmksRVnWsCwzNo4DY',
   authDomain: 'random-meal-platform.firebaseapp.com',
@@ -47,16 +49,13 @@ export const signInWIthGoogle = () => signInWithPopup(auth, provider);
 // FireStore Config
 export const db = getFirestore();
 
-export const getCategoriesAndDocuments = async () => {
+export const getCategoriesAndDocuments = async (): Promise<Category[]> => {
   const collectionRef = collection(db, 'categories');
   const q = query(collectionRef);
   const querySnapshot = await getDocs(q);
-  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
-    const { title, items } = docSnapshot.data();
-    acc[title.toLowerCase()] = items;
-    return acc;
-  }, {});
-  return categoryMap;
+  return querySnapshot.docs.map(
+    (docSnapshot) => docSnapshot.data() as Category,
+  );
 };
 
 export type UserDocument = {
