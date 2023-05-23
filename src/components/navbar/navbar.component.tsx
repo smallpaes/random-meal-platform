@@ -1,10 +1,10 @@
 import { FC, ReactElement } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { selectUser } from '../../store/user/user.selector';
-import { signOutAuthUser } from '../../utils/firebase/firebase.utils';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import CartIcon from '../cart-icon/cart-icon.component';
+import { signOutStart } from '../../store/user/user.action';
 
 import { selectIsCartOpen } from '../../store/cart/cart.selector';
 
@@ -18,9 +18,10 @@ import {
 } from './navbar.styles';
 
 const Navbar: FC = (): ReactElement => {
+  const dispatch = useDispatch();
   const { user } = useSelector(selectUser);
   const isCartOpen = useSelector(selectIsCartOpen);
-  console.log(user);
+  const signOut = () => dispatch(signOutStart());
   return (
     <NavbarContainer>
       <Link to="/">
@@ -34,7 +35,7 @@ const Navbar: FC = (): ReactElement => {
           <Link to="/meals">Meals</Link>
         </NavLinksItem>
         {user ? (
-          <NavLinksItem onClick={signOutAuthUser}>Sign Out</NavLinksItem>
+          <NavLinksItem onClick={signOut}>Sign Out</NavLinksItem>
         ) : (
           <NavLinksItem>
             <Link to="/sign-in">Sign In</Link>

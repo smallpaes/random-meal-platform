@@ -4,6 +4,11 @@ import { CategoriesMap } from './categories.types';
 
 export const selectCategoriesReducer = (state: RootState) => state.categories;
 
+export const selectCategoriesIsLoading = createSelector(
+  [selectCategoriesReducer],
+  (categories) => categories.isLoading,
+);
+
 export const selectCategories = createSelector(
   // input selector: params used to produce the output selector
   [selectCategoriesReducer],

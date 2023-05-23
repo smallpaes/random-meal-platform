@@ -1,16 +1,29 @@
 import { FC, ReactElement } from 'react';
 import { useSelector } from 'react-redux';
-import { selectCategoriesMap } from '../../store/categories/categories.selector';
+import {
+  selectCategoriesMap,
+  selectCategoriesIsLoading,
+} from '../../store/categories/categories.selector';
 
 import MealsPreview from '../../components/meals-preview/meals-preview.component';
+import Spinner from '../../components/spinner/spinner.component';
 
 const CategoriesPreview: FC = (): ReactElement => {
   const categoriesMap = useSelector(selectCategoriesMap);
+  const isLoading = useSelector(selectCategoriesIsLoading);
   return (
     <>
-      {Object.keys(categoriesMap).map((title: string) => (
-        <MealsPreview key={title} title={title} meals={categoriesMap[title]} />
-      ))}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        Object.keys(categoriesMap).map((title: string) => (
+          <MealsPreview
+            key={title}
+            title={title}
+            meals={categoriesMap[title]}
+          />
+        ))
+      )}
     </>
   );
 };

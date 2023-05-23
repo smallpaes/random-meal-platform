@@ -1,12 +1,11 @@
 import { FC, ReactElement, useState } from 'react';
-import {
-  createAuthUserWithEmailAndPassword,
-  createUserDocumentFromAuth,
-} from '../../utils/firebase/firebase.utils';
+import { useDispatch } from 'react-redux';
 import { AuthError, AuthErrorCodes } from 'firebase/auth';
 import { FormInputContainer } from '../../components/form-input/form-input.styles';
 import { Form, FormContainer, FormTitle } from './sign-up.styles';
 import Button, { ButtonTypes } from '../../components/button/button.component';
+
+import { signUpStart } from '../../store/user/user.action';
 
 export type ISignUp = {
   name: string;
@@ -23,6 +22,7 @@ const defaultFormData: ISignUp = {
 };
 
 const SignUp: FC = (): ReactElement => {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState<ISignUp>(defaultFormData);
   const { name, email, password, confirmPassword } = formData;
 
@@ -35,14 +35,7 @@ const SignUp: FC = (): ReactElement => {
     event.preventDefault();
     if (password !== confirmPassword) return;
     try {
-      const userCredential = await createAuthUserWithEmailAndPassword(
-        email,
-        password,
-      );
-      if (!userCredential) throw new Error('Error creating the account');
-      await createUserDocumentFromAuth(userCredential.user, {
-        displayName: name,
-      });
+      dispatch(signUpStart(email, password, name));
       setFormData(defaultFormData);
     } catch (e) {
       if ((e as AuthError).code === AuthErrorCodes.EMAIL_EXISTS) {

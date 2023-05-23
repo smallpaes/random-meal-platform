@@ -1,8 +1,5 @@
 import { FC, ReactElement, useState } from 'react';
-import {
-  signInWIthGoogle,
-  signInAuthUserWithEmailAndPassword,
-} from '../../utils/firebase/firebase.utils';
+import { useDispatch, useSelector } from 'react-redux';
 import { FormInputContainer } from '../../components/form-input/form-input.styles';
 import {
   Form,
@@ -13,6 +10,11 @@ import {
   SignUpLink,
 } from './sign-in.styles';
 import Button, { ButtonTypes } from '../../components/button/button.component';
+import {
+  googleSignInStart,
+  emailSignInStart,
+} from '../../store/user/user.action';
+import { selectUserIsLoading } from '../../store/user/user.selector';
 
 export type SignInForm = {
   email: string;
@@ -25,8 +27,10 @@ const defaultFormData: SignInForm = {
 };
 
 const SignIn: FC = (): ReactElement => {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState<SignInForm>(defaultFormData);
   const { email, password } = formData;
+  const isLoading = useSelector(selectUserIsLoading);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -36,11 +40,7 @@ const SignIn: FC = (): ReactElement => {
     event.preventDefault();
     if (!password || !email) return;
     try {
-      const userCredential = await signInAuthUserWithEmailAndPassword(
-        email,
-        password,
-      );
-      if (!userCredential) throw new Error('Error logging in user');
+      dispatch(emailSignInStart(email, password));
       setFormData(defaultFormData);
     } catch (e) {
       alert('Sign in info incorrect');
@@ -48,7 +48,7 @@ const SignIn: FC = (): ReactElement => {
   };
 
   const logGoogleUser = async () => {
-    await signInWIthGoogle();
+    dispatch(googleSignInStart());
   };
 
   return (
@@ -76,7 +76,11 @@ const SignIn: FC = (): ReactElement => {
             required
             onChange={handleChange}
           />
-          <Button type="submit" buttonType={ButtonTypes.PRIMARY}>
+          <Button
+            disabled={isLoading}
+            type="submit"
+            buttonType={ButtonTypes.PRIMARY}
+          >
             Sign In
           </Button>
         </Form>
