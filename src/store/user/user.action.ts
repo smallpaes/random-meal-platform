@@ -1,4 +1,5 @@
 import { User } from 'firebase/auth';
+import { NavigateFunction } from 'react-router-dom';
 import {
   createAction,
   withMatcher,
@@ -27,20 +28,27 @@ export const checkUserSession = withMatcher(
   (): CheckUserSession => createAction(USER_ACTION_TYPES.CHECK_USER_SESSION),
 );
 
-export type GoogleSignInStart = Action<USER_ACTION_TYPES.GOOGLE_SIGN_IN_START>;
+export type GoogleSignInStart = ActionWithPayload<
+  USER_ACTION_TYPES.GOOGLE_SIGN_IN_START,
+  { dispatch: NavigateFunction }
+>;
 
 export const googleSignInStart = withMatcher(
-  (): GoogleSignInStart => createAction(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START),
+  (dispatch: NavigateFunction): GoogleSignInStart =>
+    createAction(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START, { dispatch }),
 );
 
 export type EmailSignInStart = ActionWithPayload<
   USER_ACTION_TYPES.EMAIL_SIGN_IN_START,
-  { email: string; password: string }
+  { userData: { email: string; password: string }; dispatch: NavigateFunction }
 >;
 
 export const emailSignInStart = withMatcher(
-  (email: string, password: string): EmailSignInStart =>
-    createAction(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, { email, password }),
+  (
+    userData: { email: string; password: string },
+    dispatch: NavigateFunction,
+  ): EmailSignInStart =>
+    createAction(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, { userData, dispatch }),
 );
 
 export type SignInSuccess = ActionWithPayload<

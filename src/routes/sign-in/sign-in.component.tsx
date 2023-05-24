@@ -1,5 +1,6 @@
 import { FC, ReactElement, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { FormInputContainer } from '../../components/form-input/form-input.styles';
 import {
   Form,
@@ -27,6 +28,7 @@ const defaultFormData: SignInForm = {
 };
 
 const SignIn: FC = (): ReactElement => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState<SignInForm>(defaultFormData);
   const { email, password } = formData;
@@ -40,7 +42,7 @@ const SignIn: FC = (): ReactElement => {
     event.preventDefault();
     if (!password || !email) return;
     try {
-      dispatch(emailSignInStart(email, password));
+      dispatch(emailSignInStart({ email, password }, navigate));
       setFormData(defaultFormData);
     } catch (e) {
       alert('Sign in info incorrect');
@@ -48,7 +50,7 @@ const SignIn: FC = (): ReactElement => {
   };
 
   const logGoogleUser = async () => {
-    dispatch(googleSignInStart());
+    dispatch(googleSignInStart(navigate));
   };
 
   return (

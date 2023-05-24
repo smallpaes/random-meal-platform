@@ -13,6 +13,7 @@ import {
   EmailSignInStart,
   SignUpStart,
   SignUpSuccess,
+  GoogleSignInStart,
 } from './user.action';
 
 import {
@@ -59,10 +60,13 @@ export function* onCheckUserSession() {
   yield* takeLatest(USER_ACTION_TYPES.CHECK_USER_SESSION, isUserAuthenticated);
 }
 
-export function* signInUsingGoogle() {
+export function* signInUsingGoogle({
+  payload: { dispatch },
+}: GoogleSignInStart) {
   try {
     const { user } = yield* call(signInWIthGoogle);
     yield* call(getSnapshotFromUserAuth, user);
+    dispatch('/');
   } catch (e) {
     yield* put(signInFailed(e as Error));
   }
@@ -73,7 +77,10 @@ export function* onSignInWithGoogleStart() {
 }
 
 export function* signInUsingEmailAndPassword({
-  payload: { email, password },
+  payload: {
+    userData: { email, password },
+    dispatch,
+  },
 }: EmailSignInStart) {
   try {
     const userCredential = yield* call(
@@ -84,6 +91,7 @@ export function* signInUsingEmailAndPassword({
     if (userCredential) {
       yield* call(getSnapshotFromUserAuth, userCredential.user);
     }
+    dispatch('/');
   } catch (e) {
     yield* put(signInFailed(e as Error));
   }
