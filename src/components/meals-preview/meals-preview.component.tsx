@@ -1,4 +1,5 @@
 import { FC, ReactElement } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { CategoryItem } from '../../store/categories/categories.types';
 import { ButtonTypes } from '../button/button.component';
@@ -19,6 +20,7 @@ const CategoriesPreview: FC<IMealsPreview> = ({
   title,
   meals,
 }): ReactElement => {
+  const navigate = useNavigate();
   return (
     <>
       <CategoryContainer>
@@ -28,7 +30,11 @@ const CategoriesPreview: FC<IMealsPreview> = ({
             <MealCard key={meal.id} meal={meal} />
           ))}
         </CategoryItems>
-        <CategoryButton isOutline={true} buttonType={ButtonTypes.PRIMARY}>
+        <CategoryButton
+          onClick={() => navigate(`${title}`)}
+          isOutline={true}
+          buttonType={ButtonTypes.PRIMARY}
+        >
           Discover More
         </CategoryButton>
       </CategoryContainer>

@@ -5,7 +5,8 @@ export const CategoryContainer = styled.section`
   margin-bottom: 3.5rem;
 `;
 
-export const CategoryHeader = styled.h1`
+export const CategoryHeader = styled.h2`
+  text-transform: capitalize;
   text-align: center;
   color: ${({ theme }) => theme.colors.dark[300]};
   font-weight: 600;
