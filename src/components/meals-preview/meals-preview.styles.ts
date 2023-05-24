@@ -5,12 +5,12 @@ export const CategoryContainer = styled.section`
   margin-bottom: 3.5rem;
 `;
 
-export const CategoryHeader = styled.h2`
+export const CategoryHeader = styled.h3`
   text-transform: capitalize;
   text-align: center;
   color: ${({ theme }) => theme.colors.dark[300]};
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.7rem;
 
   ${({ theme }) => theme.media.md} {
     text-align: left;
