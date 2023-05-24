@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { MealCard } from './meal-card.component';
 
 export const MealCardContainer = styled.article`
   width: 100%;

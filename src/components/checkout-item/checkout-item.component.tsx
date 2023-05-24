@@ -10,10 +10,10 @@ import {
   ArrowUpIcon,
   ArrowDownIcon,
 } from './checkout-item.styles';
-import { CartItemType } from '../../store/cart/cart.reducer';
+import { CartItem } from '../../store/cart/cart.types';
 
 export interface ICheckoutItem {
-  checkoutItem: CartItemType;
+  checkoutItem: CartItem;
 }
 
 const CheckoutItem: FC<ICheckoutItem> = ({ checkoutItem }): ReactElement => {

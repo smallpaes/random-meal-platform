@@ -5,7 +5,7 @@ import {
   CartItemDetails,
   CartItemTotal,
 } from './cart-item.styles';
-import { CartItemType } from '../../store/cart/cart.reducer';
+import { CartItem as CartItemType } from '../../store/cart/cart.types';
 
 export interface CartItemProps {
   cartItem: CartItemType;
