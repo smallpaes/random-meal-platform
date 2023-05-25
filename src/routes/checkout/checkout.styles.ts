@@ -4,13 +4,19 @@ import backgroundUrl from '../../assets/pineapple.png';
 export const CheckoutContainer = styled.section`
   display: grid;
   grid-template-columns: 1fr;
-  height: 80vh;
+  height: calc(100vh - 50px);
   background-position-y: bottom;
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url(${backgroundUrl});
+  gap: 1rem;
+  padding: 1rem;
+  overflow: auto;
+
   ${({ theme }) => theme.media.md} {
     grid-template-columns: 1fr 2fr;
+    grid-template-rows: 100%;
+    overflow: hidden;
   }
   ${({ theme }) => theme.media.lg} {
     grid-template-columns: 1fr 1fr;
@@ -36,18 +42,22 @@ export const SidebarImage = styled.img`
 `;
 
 export const CheckoutInfoContainer = styled.section`
-  max-height: 450px;
-  /* background-color: ${({ theme }) => theme.colors.light[200]}; */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* height: 100%; */
+`;
+
+export const CheckoutSummary = styled.div`
+  flex: 1;
   background-color: ${({ theme }) => theme.colors.light[100]};
   border-radius: ${({ theme }) => theme.borderRadius.md};
   padding: 1rem;
-  margin: 1rem 0;
   display: flex;
   flex-direction: column;
   box-shadow: 0 1px 4px #00000014, 0 0 0 1px #0000000a;
   ${({ theme }) => theme.media.md} {
-    max-height: 600px;
-    margin: 1rem;
+    max-height: 70%;
   }
 `;
 

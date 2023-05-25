@@ -36,7 +36,7 @@ const CheckoutItem: FC<ICheckoutItem> = ({ checkoutItem }): ReactElement => {
         <span>{quantity}</span>
         <ArrowDownIcon onClick={removeItemHandler} />
       </CheckoutItemQuantity>
-      <span>$ {price}</span>
+      <span>&pound; {price}</span>
       <RemoveButton onClick={clearItemHandler}>X</RemoveButton>
     </CheckoutItemContainer>
   );

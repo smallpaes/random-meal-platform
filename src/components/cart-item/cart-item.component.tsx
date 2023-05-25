@@ -19,7 +19,7 @@ const CartItem: FC<CartItemProps> = ({ cartItem }): ReactElement => {
       <CartItemDetails>
         <h5>{name}</h5>
         <CartItemTotal>
-          {quantity} x ${price}
+          {quantity} x &pound;{price}
         </CartItemTotal>
       </CartItemDetails>
     </CartItemContainer>
