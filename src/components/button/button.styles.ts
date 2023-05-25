@@ -28,7 +28,7 @@ export const BaseButton = styled.button<ButtonProps>`
 
 export const PrimaryButton = styled(BaseButton)`
   background-color: ${({ theme, $isOutline }) =>
-    $isOutline ? theme.colors.light[100] : theme.colors.primary};
+    $isOutline ? 'transparent' : theme.colors.primary};
   color: ${({ theme, $isOutline }) =>
     $isOutline ? theme.colors.primary : theme.colors.light[100]};
   border: 1px solid
@@ -44,7 +44,7 @@ export const PrimaryButton = styled(BaseButton)`
 
 export const SecondaryButton = styled(BaseButton)`
   background-color: ${({ theme, $isOutline }) =>
-    $isOutline ? theme.colors.light[100] : theme.colors.secondary};
+    $isOutline ? 'transparent' : theme.colors.secondary};
   color: ${({ theme, $isOutline }) =>
     $isOutline ? theme.colors.secondary : theme.colors.light[100]};
   border: 1px solid
