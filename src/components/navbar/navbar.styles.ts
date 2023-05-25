@@ -12,6 +12,7 @@ export const NavbarContainer = styled.nav`
   border-bottom: 1px solid ${({ theme }) => theme.colors.light[300]};
   background-color: ${({ theme }) => theme.colors.light[100]};
   height: 50px;
+  z-index: 2;
 `;
 
 export const NanLinksContainer = styled.ul`
