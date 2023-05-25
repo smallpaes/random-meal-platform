@@ -55,7 +55,7 @@ export const CheckoutSummary = styled.div`
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 1px 4px #00000014, 0 0 0 1px #0000000a;
+  box-shadow: ${({ theme }) => theme.boxShadow.sm};
   ${({ theme }) => theme.media.md} {
     max-height: 70%;
   }

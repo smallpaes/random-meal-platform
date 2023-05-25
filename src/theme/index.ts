@@ -64,11 +64,18 @@ const borderRadius = {
   xl: '1rem',
 };
 
+const boxShadow = {
+  sm: 'rgba(0, 0, 0, 0.16) 0px 1px 4px',
+  md: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
+  lg: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+};
+
 export const theme = {
   colors,
   fontSizes,
   media,
   borderRadius,
+  boxShadow,
 };
 
 export interface ITheme {

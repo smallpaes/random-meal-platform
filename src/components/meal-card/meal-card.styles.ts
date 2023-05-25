@@ -7,7 +7,7 @@ export const MealCardContainer = styled.article`
   grid-template-rows: 200px;
   overflow: hidden;
   border-radius: ${({ theme }) => theme.borderRadius.sm};
-  box-shadow: 0 1px 4px #00000014, 0 0 0 1px #0000000a;
+  box-shadow: ${({ theme }) => theme.boxShadow.sm};
 `;
 
 export const MealCardImage = styled.img`

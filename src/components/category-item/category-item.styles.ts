@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const CategoryItemContainer = styled.div`
   width: 100px;
   border-radius: ${({ theme }) => theme.borderRadius.sm};
-  box-shadow: 0 1px 4px #00000014, 0 0 0 1px #0000000a;
+  box-shadow: ${({ theme }) => theme.boxShadow.sm};
   flex-shrink: 0;
 `;
 
