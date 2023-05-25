@@ -3,7 +3,16 @@ import { useSelector } from 'react-redux';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 import Button from '../button/button.component';
-import { FormTitle, FormContainer } from './payment-form.styles';
+import Dialog from '../dialog/dialog.component';
+
+import {
+  FormTitle,
+  FormContainer,
+  DialogContentContainer,
+  DialogImage,
+  DialogMessage,
+  DialogTitle,
+} from './payment-form.styles';
 import { selectCartTotal } from '../../store/cart/cart.selector';
 import { selectUser } from '../../store/user/user.selector';
 
@@ -13,6 +22,7 @@ const PaymentForm: FC = (): ReactElement => {
   const total = useSelector(selectCartTotal);
   const { user } = useSelector(selectUser);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [isShowDialog, setIsShowDialog] = useState(false);
 
   const paymentHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -35,11 +45,12 @@ const PaymentForm: FC = (): ReactElement => {
       },
     });
     setIsProcessing(false);
+
     if (paymentResult.error) {
       alert(paymentResult.error.message);
     } else {
       if (paymentResult.paymentIntent.status === 'succeeded') {
-        alert('Payment successful');
+        setIsShowDialog(true);
       }
     }
   };
@@ -51,6 +62,13 @@ const PaymentForm: FC = (): ReactElement => {
       <Button disabled={isProcessing} type="submit">
         Pay
       </Button>
+      <Dialog isOpen={isShowDialog} onClose={() => setIsShowDialog(false)}>
+        <DialogContentContainer>
+          <DialogImage />
+          <DialogTitle>Order Success</DialogTitle>
+          <DialogMessage>Get Ready To Pick Them Up</DialogMessage>
+        </DialogContentContainer>
+      </Dialog>
     </FormContainer>
   );
 };
