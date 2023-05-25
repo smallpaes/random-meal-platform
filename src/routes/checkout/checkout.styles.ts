@@ -4,7 +4,7 @@ import backgroundUrl from '../../assets/pineapple.png';
 export const CheckoutContainer = styled.section`
   display: grid;
   grid-template-columns: 1fr;
-  height: calc(100vh - 50px);
+  height: 100%;
   background-position-y: bottom;
   background-repeat: no-repeat;
   background-size: cover;
