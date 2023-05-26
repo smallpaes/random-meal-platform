@@ -16,15 +16,20 @@ import {
   CategoryItems,
 } from './category.styles';
 
+type CategoryRouteParams = {
+  category: string;
+};
+
 const Category: FC = (): ReactElement => {
-  const { category } = useParams();
+  const { category } = useParams<
+    keyof CategoryRouteParams
+  >() as CategoryRouteParams;
   const [categoryMeals, setCategoryMeals] = useState<CategoryItem[]>([]);
 
   const categoriesMap = useSelector(selectCategoriesMap);
   const isLoading = useSelector(selectCategoriesIsLoading);
 
   useEffect(() => {
-    if (!category) return;
     setCategoryMeals(categoriesMap[category]);
   }, [categoriesMap, category]);
   return (

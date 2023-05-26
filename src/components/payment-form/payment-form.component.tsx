@@ -1,7 +1,8 @@
-import { FC, ReactElement, useState } from 'react';
+import { FC, ReactElement, useState, FormEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { StripeCardElement } from '@stripe/stripe-js';
 
 import Button from '../button/button.component';
 import PaymentFormDialog from '../payment-form-dialog/payment-form-dialog.component';
@@ -31,6 +32,12 @@ const defaultPaymentMessage: PaymentMessage = {
   icon: <></>,
 };
 
+const isValidCardElement = (
+  cardElement: StripeCardElement | null,
+): cardElement is StripeCardElement => {
+  return cardElement !== null;
+};
+
 const PaymentForm: FC = (): ReactElement => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -45,7 +52,7 @@ const PaymentForm: FC = (): ReactElement => {
     defaultPaymentMessage,
   );
 
-  const paymentHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+  const paymentHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!strip || !elements || cartCount <= 0) return;
     setIsProcessing(true);
@@ -57,9 +64,11 @@ const PaymentForm: FC = (): ReactElement => {
       body: JSON.stringify({ amount: total * 100 }),
     }).then((res) => res.json());
     const clientSecret = response.paymentIntent.client_secret;
+    const cardDetail = elements.getElement(CardElement);
+    if (!isValidCardElement(cardDetail)) return;
     const paymentResult = await strip.confirmCardPayment(clientSecret, {
       payment_method: {
-        card: elements.getElement(CardElement)!,
+        card: cardDetail,
         billing_details: {
           name: user?.displayName || 'Guest',
         },
