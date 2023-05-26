@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ReactComponent as MealSvg } from '../../assets/meal.svg';
+import { ReactComponent as ShySvg } from '../../assets/shy.svg';
 
 export const FormContainer = styled.form`
   width: 100%;
@@ -20,24 +21,12 @@ export const FormTitle = styled.h4`
   font-size: ${({ theme }) => theme.fontSizes.lg};
 `;
 
-export const DialogContentContainer = styled.div`
-  min-width: 400px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-export const DialogImage = styled(MealSvg)`
+export const DialogSuccessImage = styled(MealSvg)`
   width: 80px;
   height: 80px;
 `;
 
-export const DialogTitle = styled.h3`
-  color: ${({ theme }) => theme.colors.dark[200]};
-  margin: 0.2rem 0;
-`;
-
-export const DialogMessage = styled.p`
-  color: ${({ theme }) => theme.colors.dark[200]};
+export const DialogFailedImage = styled(ShySvg)`
+  width: 80px;
+  height: 80px;
 `;

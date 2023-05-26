@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ReactComponent as BowlSvg } from '../../assets/bowl.svg';
 import backgroundUrl from '../../assets/pineapple.png';
 
 export const CheckoutContainer = styled.section`
@@ -81,4 +82,23 @@ export const CheckoutOutTotal = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: ${({ theme }) => theme.fontSizes.lg};
+`;
+
+export const EmptyMessageContainer = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+`;
+
+export const BowlIcon = styled(BowlSvg)`
+  width: 50px;
+  height: 50px;
+  fill: ${({ theme }) => theme.colors.primary};
+`;
+
+export const EmptyMessageTitle = styled.h5`
+  color: ${({ theme }) => theme.colors.primary};
 `;

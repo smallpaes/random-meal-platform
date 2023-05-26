@@ -1,10 +1,7 @@
 import { FC, ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 import { selectCartItems } from '../../store/cart/cart.selector';
-import {
-  selectCartTotal,
-  selectCartCount,
-} from '../../store/cart/cart.selector';
+import { selectCartTotal } from '../../store/cart/cart.selector';
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 import PaymentForm from '../../components/payment-form/payment-form.component';
 
@@ -17,12 +14,14 @@ import {
   CheckoutDivider,
   CheckoutOutTotal,
   CheckoutSummary,
+  BowlIcon,
+  EmptyMessageContainer,
+  EmptyMessageTitle,
 } from './checkout.styles';
 
 const Checkout: FC = (): ReactElement => {
   const checkoutItems = useSelector(selectCartItems);
   const total = useSelector(selectCartTotal);
-  const cartItemsCount = useSelector(selectCartCount);
   return (
     <CheckoutContainer>
       <CheckoutSidebar>
@@ -30,17 +29,26 @@ const Checkout: FC = (): ReactElement => {
       </CheckoutSidebar>
       <CheckoutInfoContainer>
         <CheckoutSummary>
-          <CheckoutItems>
-            {checkoutItems.map((item) => (
-              <CheckoutItem key={item.id} checkoutItem={item} />
-            ))}
-          </CheckoutItems>
-          <CheckoutDivider />
-          <CheckoutOutTotal>
-            Total: <span> &pound;{total}</span>
-          </CheckoutOutTotal>
+          {checkoutItems.length > 0 ? (
+            <>
+              <CheckoutItems>
+                {checkoutItems.map((item) => (
+                  <CheckoutItem key={item.id} checkoutItem={item} />
+                ))}
+              </CheckoutItems>
+              <CheckoutDivider />
+              <CheckoutOutTotal>
+                Total: <span> &pound;{total}</span>
+              </CheckoutOutTotal>
+            </>
+          ) : (
+            <EmptyMessageContainer>
+              <BowlIcon />
+              <EmptyMessageTitle>Your cart is empty</EmptyMessageTitle>
+            </EmptyMessageContainer>
+          )}
         </CheckoutSummary>
-        {cartItemsCount > 0 && <PaymentForm />}
+        <PaymentForm />
       </CheckoutInfoContainer>
     </CheckoutContainer>
   );
