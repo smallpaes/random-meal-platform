@@ -70,17 +70,28 @@ const boxShadow = {
   lg: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
 };
 
+const opacity = {
+  none: 0,
+  sm: 0.3,
+  md: 0.5,
+  lg: 0.8,
+  full: 1,
+};
+
 export const theme = {
   colors,
   fontSizes,
   media,
   borderRadius,
   boxShadow,
+  opacity,
 };
 
 export interface ITheme {
   colors: typeof colors;
   fontSizes: typeof fontSizes;
   media: IMediaQueriesBreakpoints;
-  borderRadius: typeof fontSizes;
+  borderRadius: typeof borderRadius;
+  boxShadow: typeof boxShadow;
+  opacity: typeof opacity;
 }

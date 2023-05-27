@@ -1,5 +1,11 @@
 import { FC, ReactElement } from 'react';
+
+import { HomeContainer } from './home.styles';
+
 import Categories from '../../components/categories/categories.component';
+import Carousel from '../../components/carousel/carousel.component';
+
+import BANNER_IMAGES from './banner-images.json';
 
 const Home: FC = (): ReactElement => {
   const categories = [
@@ -29,8 +35,12 @@ const Home: FC = (): ReactElement => {
       imageUrl: 'https://www.themealdb.com/images/category/miscellaneous.png',
     },
   ];
-
-  return <Categories categories={categories} />;
+  return (
+    <HomeContainer>
+      <Carousel opacity="sm" images={BANNER_IMAGES} />
+      <Categories categories={categories} />
+    </HomeContainer>
+  );
 };
 
 export default Home;
