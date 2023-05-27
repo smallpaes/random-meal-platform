@@ -7,7 +7,6 @@ import {
 } from './category-item.styles';
 
 export interface ICategory {
-  id: string;
   title: string;
   imageUrl: string;
 }

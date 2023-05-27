@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { FullHeight } from '../../theme/utils';
+
+export const SignInContainer = styled.section`
+  ${FullHeight}
+`;
 
 export const FormContainer = styled.div`
   width: 100%;
   max-width: 400px;
-  margin: 6rem auto 0 auto;
-  padding: 2rem;
+  margin: 0 auto;
+  padding: 6rem 2rem 0 2rem;
 `;
 
 export const Separator = styled.hr`

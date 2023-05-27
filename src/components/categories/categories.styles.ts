@@ -7,4 +7,5 @@ export const CategoriesContainer = styled.div`
   overflow-x: auto;
   gap: 0.5rem;
   padding: 0.2rem 0;
+  border-radius: ${({ theme }) => theme.borderRadius.sm};
 `;

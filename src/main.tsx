@@ -11,6 +11,7 @@ import App from './App.tsx';
 import { store, persistor } from './store/store.ts';
 import './index.css';
 import { stripePromise } from './utils/stripe/stripe.utils.ts';
+import ScrollToTop from './components/scroll-to-top/scroll-to-top.component.tsx';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
@@ -18,6 +19,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
           <ThemeProvider theme={theme}>
+            <ScrollToTop />
             <GlobalStyles />
             <Elements stripe={stripePromise}>
               <App />

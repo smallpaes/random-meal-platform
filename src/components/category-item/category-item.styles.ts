@@ -5,11 +5,12 @@ export const CategoryItemContainer = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius.sm};
   box-shadow: ${({ theme }) => theme.boxShadow.sm};
   flex-shrink: 0;
+  overflow: hidden;
 `;
 
 export const CategoryItemImg = styled.img`
   width: 100%;
-  height: 60px;
+  height: 100px;
   object-fit: cover;
 `;
 

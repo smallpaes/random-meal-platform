@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ReactComponent as LogoSvg } from '../../assets/logo.svg';
+import { NavBarHeight } from '../../theme/utils';
 
 export const NavbarContainer = styled.nav`
   position: fixed;
@@ -11,8 +12,8 @@ export const NavbarContainer = styled.nav`
   padding: 0.5rem 1.5rem;
   border-bottom: 1px solid ${({ theme }) => theme.colors.light[300]};
   background-color: ${({ theme }) => theme.colors.light[100]};
-  height: 50px;
   z-index: 2;
+  ${NavBarHeight};
 `;
 
 export const NanLinksContainer = styled.ul`

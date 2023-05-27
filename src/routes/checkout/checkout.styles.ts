@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { ReactComponent as BowlSvg } from '../../assets/bowl.svg';
 import backgroundUrl from '../../assets/pineapple.png';
+import { FullHeight } from '../../theme/utils';
 
 export const CheckoutContainer = styled.section`
   display: grid;
@@ -13,6 +14,7 @@ export const CheckoutContainer = styled.section`
   gap: 1rem;
   padding: 1rem;
   overflow: auto;
+  ${FullHeight}
 
   ${({ theme }) => theme.media.md} {
     grid-template-columns: 1fr 2fr;

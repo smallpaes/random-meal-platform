@@ -2,7 +2,12 @@ import { FC, ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { AuthError, AuthErrorCodes } from 'firebase/auth';
 import { FormInputContainer } from '../../components/form-input/form-input.styles';
-import { Form, FormContainer, FormTitle } from './sign-up.styles';
+import {
+  Form,
+  FormContainer,
+  FormTitle,
+  SignInContainer,
+} from './sign-up.styles';
 import Button, { ButtonTypes } from '../../components/button/button.component';
 
 import { signUpStart } from '../../store/user/user.action';
@@ -45,7 +50,7 @@ const SignUp: FC = (): ReactElement => {
   };
 
   return (
-    <section>
+    <SignInContainer>
       <FormContainer>
         <FormTitle>Sign Up</FormTitle>
         <Form onSubmit={handleSubmit}>
@@ -95,7 +100,7 @@ const SignUp: FC = (): ReactElement => {
           </Button>
         </Form>
       </FormContainer>
-    </section>
+    </SignInContainer>
   );
 };
 

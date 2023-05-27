@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { ITheme } from '../../theme';
 import { Overlay } from '../../theme/utils';
 
-export const CarouselContainer = styled.header<{
+export const CarouselContainer = styled.section<{
   readonly $height?: string;
   readonly $width?: string;
   readonly $radius: keyof ITheme['borderRadius'];

@@ -9,6 +9,7 @@ import {
   Separator,
   SignUpMessage,
   SignUpLink,
+  SignInContainer,
 } from './sign-in.styles';
 import Button, { ButtonTypes } from '../../components/button/button.component';
 import {
@@ -54,7 +55,7 @@ const SignIn: FC = (): ReactElement => {
   };
 
   return (
-    <section>
+    <SignInContainer>
       <FormContainer>
         <FormTitle>Sign In</FormTitle>
         <Form onSubmit={handleSubmit}>
@@ -95,7 +96,7 @@ const SignIn: FC = (): ReactElement => {
           <SignUpLink to="/sign-up">Sign Up</SignUpLink>
         </SignUpMessage>
       </FormContainer>
-    </section>
+    </SignInContainer>
   );
 };
 

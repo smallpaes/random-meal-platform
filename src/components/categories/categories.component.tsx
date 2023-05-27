@@ -12,7 +12,7 @@ const Categories: FC<ICategoriesProps> = ({ categories }): ReactElement => {
   return (
     <CategoriesContainer>
       {categories.map((category: ICategory) => (
-        <CategoryItem key={category.id} category={category} />
+        <CategoryItem key={category.title} category={category} />
       ))}
     </CategoriesContainer>
   );
