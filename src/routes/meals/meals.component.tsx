@@ -1,4 +1,4 @@
-import { FC, ReactElement, useEffect } from 'react';
+import { FC, ReactElement } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import MealsPreview from '../categories-preview/categories-preview.component';
