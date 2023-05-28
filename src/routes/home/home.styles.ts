@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const HomeContainer = styled.section`
-  padding: 2rem 2rem 0 2rem;
+  padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
 `;
