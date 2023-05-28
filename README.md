@@ -38,26 +38,26 @@
 #### Home Page
 
 <div style="width:100%">
-  <img src="https://ik.imagekit.io/mikank/RandomMeal/Github/homepage.png?updatedAt=1685295219347" alt="Homepage screenshot">
+  <img src="https://ik.imagekit.io/mikank/RandomMeal/Github/homepage.png?updatedAt=1685295219347" alt="Homepage screenshot" style="width:100%">
 </div>
 
 #### Meals Explore
 
 <div style="width:100%">
-  <img src="https://ik.imagekit.io/mikank/RandomMeal/Github/meals-explore.png?updatedAt=1685295218601" alt="Meals page screenshot">
+  <img src="https://ik.imagekit.io/mikank/RandomMeal/Github/meals-explore.png?updatedAt=1685295218601" alt="Meals page screenshot" style="width:100%">
 </div>
 
 #### Authentication
 
 <div style="width:100%">
-  <img src="https://ik.imagekit.io/mikank/RandomMeal/Github/sign-in.png?updatedAt=1685295202868" alt="Sign in page screenshot">
-  <img src="https://ik.imagekit.io/mikank/RandomMeal/Github/sign-up.png?updatedAt=1685295202830" alt="Sign up page screenshot">
+  <img src="https://ik.imagekit.io/mikank/RandomMeal/Github/sign-in.png?updatedAt=1685295202868" alt="Sign in page screenshot" style="width:100%">
+  <img src="https://ik.imagekit.io/mikank/RandomMeal/Github/sign-up.png?updatedAt=1685295202830" alt="Sign up page screenshot" style="width:100%">
 </div>
 
 #### Checkout
 
 <div style="width:100%">
-  <img src="https://ik.imagekit.io/mikank/RandomMeal/Github/checkout.png?updatedAt=1685295205147" alt="Checkout page screenshot">
+  <img src="https://ik.imagekit.io/mikank/RandomMeal/Github/checkout.png?updatedAt=1685295205147" alt="Checkout page screenshot" style="width:100%">
 </div>
 
 ## About the project
