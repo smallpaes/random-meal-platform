@@ -55,3 +55,18 @@ export const ImageSelector = styled.div<{
     $selected ? theme.colors.light[100] : theme.colors.dark[100]};
   cursor: pointer;
 `;
+
+export const CarouselTitle = styled.h3`
+  color: ${({ theme }) => theme.colors.light[100]};
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  padding: 0 1rem;
+  transform: translateY(-50%);
+
+  ${({ theme }) => theme.media.md} {
+    text-align: left;
+    padding: 0 2rem;
+  }
+`;

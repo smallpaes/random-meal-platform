@@ -1,4 +1,10 @@
-import { FC, ReactElement, useState, useEffect } from 'react';
+import {
+  FC,
+  ReactElement,
+  useState,
+  useEffect,
+  PropsWithChildren,
+} from 'react';
 
 import {
   CarouselContainer,
@@ -6,6 +12,7 @@ import {
   CarouselOverlay,
   ImageSelectorsContainer,
   ImageSelector,
+  CarouselTitle,
 } from './carousel.styles';
 import { ITheme } from '../../theme';
 
@@ -14,7 +21,7 @@ export type Image = {
   description: string;
 };
 
-interface ICarousel {
+interface ICarousel extends PropsWithChildren {
   images: Image[];
   radius?: keyof ITheme['borderRadius'];
   opacity?: keyof ITheme['opacity'];
@@ -54,6 +61,7 @@ const Carousel: FC<ICarousel> = ({
         />
       ))}
       <CarouselOverlay $opacity={opacity} />
+      <CarouselTitle>{images[currentIdx].description}</CarouselTitle>
       <ImageSelectorsContainer>
         {images.map((image, index) => (
           <ImageSelector
