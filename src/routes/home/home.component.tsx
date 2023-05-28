@@ -11,12 +11,16 @@ import {
 import Categories from '../../components/categories/categories.component';
 import Carousel from '../../components/carousel/carousel.component';
 import Recommended from '../../components/recommended/recommended.component';
-import { selectCategoriesBasicInfo } from '../../store/categories/categories.selector';
+import {
+  selectCategoriesBasicInfo,
+  selectCategoriesIsLoading,
+} from '../../store/categories/categories.selector';
 
 import BANNER_IMAGES from './banner-images.json';
 
 const Home: FC = (): ReactElement => {
   const categories = useSelector(selectCategoriesBasicInfo);
+  const isLoading = useSelector(selectCategoriesIsLoading);
   return (
     <HomeContainer>
       <CarouselContainer>
@@ -24,7 +28,7 @@ const Home: FC = (): ReactElement => {
       </CarouselContainer>
       <HomeSectionContainer>
         <HomeSectionTitle>Explore Various Cuisines</HomeSectionTitle>
-        <Categories categories={categories} />
+        <Categories categories={categories} isLoading={isLoading} />
       </HomeSectionContainer>
       <HomeSectionContainer>
         <HomeSectionTitle>Recommended For You</HomeSectionTitle>

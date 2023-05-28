@@ -11,6 +11,7 @@ export const RecommendedItemsContainer = styled.section`
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
+  width: 100%;
 
   ${({ theme }) => theme.media.sm} {
     grid-template-columns: repeat(2, 1fr);

@@ -3,7 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { MealCard } from '../meal-card/meal-card.component';
-import { selectCategoriesTopThree } from '../../store/categories/categories.selector';
+import {
+  selectCategoriesTopThree,
+  selectCategoriesIsLoading,
+} from '../../store/categories/categories.selector';
 import {
   RecommendedItemsContainer,
   RecommendedContainer,
@@ -16,6 +19,7 @@ const Recommended: FC = (): ReactElement => {
   const navigate = useNavigate();
   const recommendedMeals = useSelector(selectCategoriesTopThree);
   const [page, setPage] = useState(1);
+  const isLoading = useSelector(selectCategoriesIsLoading);
 
   const hasMoreToShow = useMemo(
     () => recommendedMeals.length > page * MEALS_PER_PAGE,
@@ -33,9 +37,15 @@ const Recommended: FC = (): ReactElement => {
   return (
     <RecommendedContainer>
       <RecommendedItemsContainer>
-        {recommendedMeals.slice(0, page * MEALS_PER_PAGE).map((meal) => (
-          <MealCard key={meal.id} meal={meal} />
-        ))}
+        {isLoading
+          ? Array.from({ length: 10 }).map((_, index) => (
+              <MealCard key={index} meal={null} isLoading={isLoading} />
+            ))
+          : recommendedMeals
+              .slice(0, page * MEALS_PER_PAGE)
+              .map((meal) => (
+                <MealCard key={meal.id} meal={meal} isLoading={isLoading} />
+              ))}
       </RecommendedItemsContainer>
       <ReadMoreButton isOutline onClick={onReadMoreClick}>
         Load More

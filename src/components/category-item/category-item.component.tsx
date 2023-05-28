@@ -5,23 +5,50 @@ import {
   CategoryItemContent,
   CategoryItemTitle,
 } from './category-item.styles';
+import { SkeletonContainer } from '../../theme/commonStyles';
 
 export interface ICategory {
   title: string;
   imageUrl: string;
 }
 
-export interface ICategoryItemProps {
-  category: ICategory;
-}
+export type FetchingState = {
+  isLoading: true;
+  category: null;
+};
 
-const CategoryItem: FC<ICategoryItemProps> = ({ category }): ReactElement => {
-  const { title, imageUrl } = category;
+export type RenderDataState = {
+  isLoading: false;
+  category: ICategory;
+};
+
+export type CategoryItemProps = FetchingState | RenderDataState;
+
+const isLoadingType = (props: CategoryItemProps): props is FetchingState => {
+  return props.isLoading;
+};
+
+const CategoryItem: FC<CategoryItemProps> = (props): ReactElement => {
+  const renderedImage = isLoadingType(props) ? (
+    <SkeletonContainer $height={'100px'} />
+  ) : (
+    <CategoryItemImg
+      src={props.category.imageUrl}
+      alt={`${props.category.title} category`}
+    />
+  );
+
+  const rendererTitle = isLoadingType(props) ? (
+    <SkeletonContainer $height=".9rem" $width="80%" />
+  ) : (
+    <CategoryItemTitle>{props.category.title}</CategoryItemTitle>
+  );
+
   return (
     <CategoryItemContainer>
-      <CategoryItemImg src={imageUrl} alt={`${title} category`} />
+      {renderedImage}
       <CategoryItemContent className="content">
-        <CategoryItemTitle>{title}</CategoryItemTitle>
+        {rendererTitle}
       </CategoryItemContent>
     </CategoryItemContainer>
   );

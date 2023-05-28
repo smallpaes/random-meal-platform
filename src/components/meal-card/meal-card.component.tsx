@@ -11,27 +11,62 @@ import {
   MealCardPrice,
   MealCardTitle,
 } from './meal-card.styles';
+import { SkeletonContainer } from '../../theme/commonStyles';
 
 import { CategoryItem } from '../../store/categories/categories.types';
 
-interface IMealCard {
-  meal: CategoryItem;
-}
+export type FetchingState = {
+  isLoading: true;
+  meal: null;
+};
 
-export const MealCard: FC<IMealCard> = ({ meal }): ReactElement => {
-  const { name, price, imageUrl } = meal;
+export type RenderDataState = {
+  isLoading: false;
+  meal: CategoryItem;
+};
+
+type MealCard = FetchingState | RenderDataState;
+
+const isLoadingType = (props: MealCard): props is FetchingState => {
+  return props.isLoading;
+};
+
+export const MealCard: FC<MealCard> = (props): ReactElement => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
-  const addMealToCart = () => dispatch(addItem(cartItems, meal));
+  const addMealToCart = () => {
+    if (isLoadingType(props)) return;
+    dispatch(addItem(cartItems, props.meal));
+  };
+
+  const renderedImage = isLoadingType(props) ? (
+    <SkeletonContainer />
+  ) : (
+    <MealCardImage src={props.meal.imageUrl} alt={props.meal.name} />
+  );
+
+  const rendererContainer = isLoadingType(props) ? (
+    <>
+      <SkeletonContainer $height="25px" $width="80%" />
+      <SkeletonContainer $height="15px" $width="20%" />
+    </>
+  ) : (
+    <>
+      <MealCardTitle>{props.meal.name}</MealCardTitle>
+      <MealCardPrice>{`$ ${props.meal.price}`}</MealCardPrice>
+    </>
+  );
+
   return (
     <MealCardContainer>
-      <MealCardImage src={imageUrl} alt={name} />
+      {renderedImage}
       <MealCardContent>
-        <MealCardTitleContainer>
-          <MealCardTitle>{name}</MealCardTitle>
-          <MealCardPrice>{`$ ${price}`}</MealCardPrice>
-        </MealCardTitleContainer>
-        <Button buttonType={ButtonTypes.SECONDARY} onClick={addMealToCart}>
+        <MealCardTitleContainer>{rendererContainer}</MealCardTitleContainer>
+        <Button
+          disabled={props.isLoading}
+          buttonType={ButtonTypes.SECONDARY}
+          onClick={addMealToCart}
+        >
           Add to cart
         </Button>
       </MealCardContent>
