@@ -40,7 +40,7 @@ const Category: FC = (): ReactElement => {
       ) : (
         <CategoryItems>
           {categoryMeals?.map((meal) => (
-            <MealCard key={meal.id} meal={meal} />
+            <MealCard key={meal.id} meal={meal} isLoading={isLoading} />
           ))}
         </CategoryItems>
       )}

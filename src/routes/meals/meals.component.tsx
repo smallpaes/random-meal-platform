@@ -1,7 +1,7 @@
 import { FC, ReactElement } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import MealsPreview from '../categories-preview/categories-preview.component';
+import CategoriesPreview from '../categories-preview/categories-preview.component';
 import Category from '../category/category.component';
 import {
   MealsBannerContainer,
@@ -19,7 +19,7 @@ const Meals: FC = (): ReactElement => {
       </MealsBannerContainer>
       <MealsDisplayContainer>
         <Routes>
-          <Route index element={<MealsPreview />} />
+          <Route index element={<CategoriesPreview />} />
           <Route path=":category" element={<Category />} />
         </Routes>
       </MealsDisplayContainer>

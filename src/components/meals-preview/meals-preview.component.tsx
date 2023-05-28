@@ -27,7 +27,7 @@ const CategoriesPreview: FC<IMealsPreview> = ({
         <CategoryHeader>{title}</CategoryHeader>
         <CategoryItems>
           {meals.slice(0, 4).map((meal) => (
-            <MealCard key={meal.id} meal={meal} />
+            <MealCard key={meal.id} meal={meal} isLoading={false} />
           ))}
         </CategoryItems>
         <CategoryButton
