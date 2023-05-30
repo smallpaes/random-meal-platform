@@ -8,6 +8,7 @@ import Meals from './routes/meals/meals.component';
 import SignIn from './routes/sign-in/sign-in.component';
 import SignUp from './routes/sign-up/sign-up.component';
 import Checkout from './routes/checkout/checkout.component';
+import NotFound from './routes/not-found/not-found.component';
 import { checkUserSession } from './store/user/user.action';
 import { fetchCategoriesStart } from './store/categories/categories.action';
 
@@ -26,6 +27,7 @@ const App: FC = (): ReactElement => {
         <Route path="sign-up" element={<SignUp />} />
         <Route path="meals/*" element={<Meals />} />
         <Route path="checkout" element={<Checkout />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );
